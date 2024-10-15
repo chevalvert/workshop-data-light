@@ -20,7 +20,7 @@ export default class Editor extends Component {
 
   template (props) {
     return (
-      <section class={['editor', props.class]}>
+      <section class={['editor', ...(Array.isArray(props.class) ? props.class : [props.class])]}>
         <div class='editor__view' ref={this.ref('view')} />
       </section>
     )

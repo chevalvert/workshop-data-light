@@ -12,6 +12,14 @@
   height: 100%;
   padding: var(--gutter);
 
+  @include wide {
+    grid-template-areas:
+    'header header header'
+    'code data scene'
+    'footer footer footer';
+    grid-template-columns: 3fr 2fr 20rem;
+  }
+
   &__header {
     grid-area: header;
     width: 100%;
@@ -52,15 +60,31 @@
 
   .editor {
     grid-area: editor;
-  }
-
-  .editor__data,
-  &.is-data-mode .editor__code {
     display: none;
+
+    &.is-active {
+      display: flex;
+    }
+
+    &-code {
+      @include wide {
+        grid-area: code;
+        display: flex;
+      }
+    }
+
+    &-data {
+      @include wide {
+        grid-area: data;
+        display: flex;
+      }
+    }
   }
 
-  &.is-data-mode .editor__data {
-    display: flex;
+  .data-code-toggler {
+    @include wide {
+      display: none;
+    }
   }
 
   .scene {

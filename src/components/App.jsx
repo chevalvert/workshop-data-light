@@ -4,7 +4,7 @@ import './App.scss'
 import slug from 'slug'
 import { raf, fpsLimiter } from '@internet/raf'
 import { Component } from '@tooooools/ui'
-import { derived, writable } from '@tooooools/ui/state'
+import { not, derived, writable } from '@tooooools/ui/state'
 import { Button, Toolbar, Input, Modal } from '@tooooools/ui/components'
 
 import * as Icons from '/data/icons'
@@ -53,7 +53,6 @@ export default class App extends Component {
           'app',
           {
             'is-running': this.state.running,
-            'is-data-mode': this.state.dataMode,
             'has-error': this.state.error
           }
         ]}
@@ -73,7 +72,7 @@ export default class App extends Component {
         </header>
 
         <Editor
-          class='editor__code'
+          class={['editor-code', { 'is-active': not(this.state.dataMode) }]}
           ref={this.ref('editor')}
           lint
           globals={Object.keys(this.context.PROPERTIES)}
@@ -81,7 +80,7 @@ export default class App extends Component {
         />
 
         <Editor
-          class='editor__data'
+          class={['editor-data', { 'is-active': this.state.dataMode }]}
           ref={this.ref('data')}
           content={this.store.data}
         />
@@ -91,10 +90,12 @@ export default class App extends Component {
         <footer class='app__footer'>
           <Toolbar>
             <Button
+              class='data-code-toggler'
               icon={derived(this.state.dataMode, d => d ? Icons.data : Icons.code)}
               label={derived(this.state.dataMode, d => d ? 'data' : 'code')}
               event-click={this.state.dataMode.toggle}
             />
+
             <Button
               icon={Icons.trash}
               title='Commencer un nouveau programme'
