@@ -28,6 +28,10 @@
       content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%2212%22%20fill%3D%22%23dd1110%22%20%2F%3E</svg>');
     }
 
+    .cm-lint-marker-warning {
+      content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%2212%22%20fill%3D%22%23f1fa8c%22%20%2F%3E</svg>');
+    }
+
     .cm-diagnostic {
       padding: 0.5em;
       background: var(--ui-color-background) !important;
