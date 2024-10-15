@@ -1,7 +1,7 @@
 export function setup () {
-  console.log('setup');
+  log('setup')
 }
 
 export function draw () {
-  console.log(frameCount);
+  log(frameCount)
 }
