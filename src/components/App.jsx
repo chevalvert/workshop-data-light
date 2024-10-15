@@ -96,6 +96,30 @@ export default class App extends Component {
               event-click={this.state.dataMode.toggle}
             />
 
+            <Toolbar>
+              <Toolbar compact>
+                <Button
+                  icon={derived(this.state.running, r => r ? Icons.stop : Icons.play)}
+                  event-click={e => {
+                    this.state.running.get() ? this.stop() : this.start()
+                  }}
+                  active={this.state.running}
+                />
+                <Input class='readonly' type='number' value={this.state.frameCount} active={this.state.running} />
+                <Input type='number' label='/' titles='frames' value={this.store.frames} active={this.state.running} />
+              </Toolbar>
+
+              <Input
+                type='number'
+                label='fps'
+                value={this.store.frameRate}
+                min={0}
+                max={30} // BUG
+              />
+            </Toolbar>
+          </Toolbar>
+
+          <Toolbar>
             <Button
               icon={Icons.trash}
               title='Commencer un nouveau programme'
@@ -110,30 +134,6 @@ export default class App extends Component {
                 }
               })}
             />
-          </Toolbar>
-
-          <Toolbar>
-            <Toolbar compact>
-              <Button
-                icon={derived(this.state.running, r => r ? Icons.stop : Icons.play)}
-                event-click={e => {
-                  this.state.running.get() ? this.stop() : this.start()
-                }}
-                active={this.state.running}
-              />
-              <Input class='readonly' type='number' value={this.state.frameCount} active={this.state.running} />
-              <Input type='number' label='/' titles='frames' value={this.store.frames} />
-
-              <hr />
-
-              <Input
-                type='number'
-                label='fps'
-                value={this.store.frameRate}
-                min={0}
-                max={30} // BUG
-              />
-            </Toolbar>
 
             <Button
               icon={Icons.save}
