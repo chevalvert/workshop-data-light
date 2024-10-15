@@ -1,0 +1,61 @@
+.editor {
+  display: flex;
+  overflow: hidden;
+
+  &__view {
+    flex: 1;
+    overflow: hidden;
+    border-radius: var(--ui-border-radius);
+
+    .cm-selectionBackground {
+      background: var(--color-dash) !important;
+    }
+
+    .cm-activeLine {
+      background-color: inherit;
+    }
+
+    .cm-scroller {
+      margin-block: 0.5em;
+    }
+
+    .cm-editor {
+      height: 100%;
+      max-height: 100%;
+    }
+
+    .cm-lint-marker-error {
+      content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%2212%22%20fill%3D%22%23dd1110%22%20%2F%3E</svg>');
+    }
+
+    .cm-diagnostic {
+      padding: 0.5em;
+      background: var(--ui-color-background) !important;
+      outline: 1px solid var(--color-dash);
+    }
+
+    .cm-gutters {
+      @include no-select;
+      background: #2d2f3f;
+      border-right: 1px solid var(--color-dash);
+    }
+
+    .cm-lineNumbers .cm-gutterElement {
+      @include font('small');
+      display: flex;
+      padding-left: 1em;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .cm-foldGutter .cm-gutterElement {
+      font-size: smaller;
+      padding-inline: 0.5em;
+    }
+
+    .cm-line {
+      padding-inline: 0.5em 1em;
+      padding-block: 0.05em;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.confirm-modal {
+  @include no-select;
+
+  --ui-modal-width: 41rem;
+
+  &__content:not(:empty) {
+    margin-bottom: var(--gutter);
+  }
+
+  &__toolbar {
+    width: 100%;
+
+    & > * {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+}

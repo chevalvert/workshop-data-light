@@ -1,0 +1,133 @@
+.app {
+  display: grid;
+
+  grid-template:
+    'header header'
+    'editor scene'
+    'footer footer';
+  grid-template-columns: 1fr 20rem;
+  grid-template-rows: var(--ui-height) 1fr var(--ui-height);
+  gap: var(--gap);
+
+  height: 100%;
+  padding: var(--gutter);
+
+  &__header {
+    grid-area: header;
+    width: 100%;
+
+    &, fieldset {
+      display: flex;
+      align-items: center;
+      gap: var(--ui-gap);
+    }
+  }
+
+  &__header &__logo {
+    @include no-select;
+    width: 1.5em;
+    height: 1.5em;
+    fill: var(--ui-color-background);
+    animation: rotate 3s infinite linear;
+
+    .app:not(.is-running) & {
+      animation-play-state: paused;
+    }
+
+    .app.has-error & {
+      fill: #dd1110;
+      animation: bounce 600ms infinite ease;
+      animation-play-state: running;
+    }
+  }
+
+  &__header &__title {
+    @include no-select;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    font-size: inherit;
+  }
+
+  .editor {
+    grid-area: editor;
+  }
+
+  .editor__data,
+  &.is-data-mode .editor__code {
+    display: none;
+  }
+
+  &.is-data-mode .editor__data {
+    display: flex;
+  }
+
+  .scene {
+    grid-area: scene;
+  }
+
+  &__footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__export {
+    fieldset {
+      --ui-color-background: var(--color-background);
+      --ui-color-text: var(--color-text);
+      --ui-border: 1px solid var(--color-dash);
+
+      display: flex;
+      flex-direction: column;
+      gap: var(--ui-gap);
+      min-width: 35rem;
+
+      & > * {
+        width: 100%;
+      }
+
+      & > *:hover, & > *:focus {
+        border-color: var(--ui-color-accent);
+      }
+
+      label {
+        color: var(--color-dash);
+      }
+    }
+
+    input[type='text'] {
+      text-align: right;
+    }
+
+    textarea {
+      padding: var(--ui-padding-container);
+
+      font-family: var(--ui-font-family);
+      font-size: var(--ui-font-size);
+      line-height: var(--ui-line-height);
+      color: var(--color-text);
+
+      background: var(--ui-color-background);
+      border: var(--ui-border);
+      border-radius: var(--ui-border-radius);
+
+      &:hover,
+      &:focus {
+        background: var(--ui-color-accent);
+        outline: 0;
+      }
+    }
+
+    footer {
+      padding: 0;
+      margin-top: var(--gutter);
+
+      & > * {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

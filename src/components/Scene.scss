@@ -1,0 +1,34 @@
+.scene {
+  @include no-select;
+  position: relative;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: var(--gutter);
+
+  cursor: zoom-in;
+
+  background: var(--ui-color-background);
+  border-radius: var(--ui-border-radius);
+
+  canvas {
+    @include no-select;
+    width: 1px;
+    height: auto;
+  }
+
+  &.is-zoomed {
+    cursor: zoom-out;
+    background: black;
+
+    canvas {
+      position: absolute;
+      inset: var(--gap);
+      width: calc(100% - var(--gap) * 2);
+      height: calc(100% - var(--gap) * 2);
+      border-radius: 3px;
+    }
+  }
+}

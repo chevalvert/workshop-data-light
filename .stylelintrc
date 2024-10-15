@@ -36,7 +36,7 @@
           "groupName": "Position",
           "noEmptyLineBetween": true,
           "emptyLineBefore": "threshold",
-          "properties": ["position", "z-index", "inset", "top", "right", "bottom", "left", ]
+          "properties": ["position", "z-index", "inset", "top", "right", "bottom", "left"]
         },
         {
           "groupName": "Box model",
@@ -48,7 +48,7 @@
           "groupName": "Typography",
           "noEmptyLineBetween": true,
           "emptyLineBefore": "threshold",
-          "properties": ["font", "font-family", "font-size", "font-smoothing", "osx-font-smoothing", "font-style", "font-weight", "hyphens", "src", "line-height", "letter-spacing", "word-spacing", "color", "text-align", "text-decoration", "text-indent", "text-overflow", "text-rendering", "text-size-adjust", "text-shadow", "text-transform", "word-break", "word-wrap", "white-space", "vertical-align", "list-style", "list-style-type", "list-style-position", "list-style-image", "pointer-events", "cursor", ]
+          "properties": ["font", "font-family", "font-size", "font-smoothing", "osx-font-smoothing", "font-style", "font-weight", "hyphens", "src", "line-height", "letter-spacing", "word-spacing", "color", "text-align", "text-decoration", "text-indent", "text-overflow", "text-rendering", "text-size-adjust", "text-shadow", "text-transform", "word-break", "word-wrap", "white-space", "vertical-align", "list-style", "list-style-type", "list-style-position", "list-style-image", "pointer-events", "cursor"]
         },
         {
           "groupName": "Cosmetics",

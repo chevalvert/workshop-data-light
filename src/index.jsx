@@ -1,25 +1,16 @@
-/* global __VERSION__ */
-
 import '/index.scss'
 
 import { render } from '@tooooools/ui'
-import { writable } from '@tooooools/ui/state'
-import { Range } from '@tooooools/ui/components'
-import Nut from '/components/Nut'
+import App from '/components/App'
 
-console.log(`${__VERSION__}-${import.meta.env.MODE}`)
+render(<App />)
 
-const speed = writable(1)
+// canvas.context.fillRect(0, 0, canvas.width, canvas.height)
+// canvas.context.strokeStyle = 'red'
+// for (let x = 0; x < canvas.width; x++) {
+//   canvas.context.moveTo(x, 0)
+//   canvas.context.lineTo(x, Math.floor(Math.random() * canvas.height))
+//   canvas.context.stroke()
+// }
 
-render(
-  <main id='App'>
-    <Nut speed={speed} />
-    <Range
-      class='speed-range'
-      store-value={speed}
-      min={0}
-      max={2}
-      step={0.1}
-    />
-  </main>
-)
+// // canvas.save()

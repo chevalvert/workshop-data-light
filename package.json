@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "workshop-data-light",
   "version": "0.0.0",
-  "description": "Opinionated Vite boilerplate",
+  "description": "client and server for the data light workshop",
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -15,11 +15,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tooooools/boilerplate.git"
+    "url": "https://github.com/chevalvert/workshop-data-light"
   },
   "devDependencies": {
     "eslint": "^8.36.0",
-    "eslint-config-standard": "^17.0.0",
+    "eslint-config-standard": "^17.1.0",
     "eslint-config-standard-jsx": "^11.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
@@ -34,6 +34,21 @@
     "vite": "^4.2.1"
   },
   "dependencies": {
-    "@tooooools/ui": "^0.1.0"
+    "@codemirror/commands": "^6.7.0",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/lint": "^6.8.2",
+    "@codemirror/view": "^6.34.1",
+    "@internet/raf": "^0.2.1",
+    "@tooooools/ui": "^1.5.0",
+    "chroma-js": "^3.1.2",
+    "codemirror": "^6.0.1",
+    "eslint-linter-browserify": "^9.12.0",
+    "file-saver": "^2.0.5",
+    "globals": "^15.11.0",
+    "iconoir": "^7.9.0",
+    "meta-png": "^1.0.6",
+    "missing-math": "^3.4.0",
+    "slug": "^9.1.0",
+    "thememirror": "^2.0.1"
   }
 }
