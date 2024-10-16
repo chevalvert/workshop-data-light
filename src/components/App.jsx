@@ -174,9 +174,13 @@ export default class App extends Component {
     }
   }
 
-  start () {
+  reset () {
     this.state.error.set(null)
     this.context.reset()
+  }
+
+  start () {
+    this.reset()
     raf.add(this.tick)
     this.state.running.set(true)
   }
@@ -258,7 +262,7 @@ export default class App extends Component {
         if (this.context.frameCount >= this.context.frames) return this.stop()
 
         try {
-          ;(this._module.draw ?? this._module.default)(dt)
+          ;(this._module.draw ?? this._module.default ?? noop)(dt)
           this.context.frameCount++
           this.refs.scene.update(this.context)
         } catch (error) {
@@ -267,8 +271,14 @@ export default class App extends Component {
       })
 
       if (import.meta.env.PROD) console.clear()
+
+      // Run setup and update scene
+      this.reset()
       ;(this._module.setup ?? noop)()
-      this.start()
+      this.refs.scene.update(this.context)
+
+      // Start only if draw call exists
+      if (this._module.draw ?? this._module.default) this.start()
     } catch (error) {
       this.#onerror(error)
     }
