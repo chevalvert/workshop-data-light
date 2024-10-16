@@ -1,7 +1,8 @@
 export function setup () {
-  log('setup')
+  log('hello world')
 }
 
 export function draw () {
-  log(frameCount)
+  clear()
+  led(frameCount, rgb(255))
 }
