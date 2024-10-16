@@ -251,7 +251,8 @@ export default class App extends Component {
   }
 
   #oncode = async () => {
-    const signature = this.store.code.get()
+    const cacheBust = `/* ${Date.now()} */\n`
+    const signature = cacheBust + this.store.code.get()
     this.stop()
 
     try {
