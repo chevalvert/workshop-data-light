@@ -37,6 +37,7 @@ export default class App extends Component {
     title: persist('Sans titre', 'title'),
     author: persist('Inconnu', 'author'),
     description: persist('', 'description'),
+    credits: persist('', 'credits'),
     frames: persist(300, 'frames'),
     frameRate: persist(30, 'frameRate'),
     ledCount: writable(+(import.meta.env.VITE_LED_COUNT ?? 0))
@@ -203,6 +204,12 @@ export default class App extends Component {
             rows='4'
             placeholder='description'
           />
+          <textarea
+            value={this.store.credits}
+            event-input={e => this.store.credits.set(e.target.value)}
+            rows='2'
+            placeholder='crédits'
+          />
         </fieldset>
 
         <footer>
@@ -217,7 +224,8 @@ export default class App extends Component {
                 title: this.store.title.get(),
                 author: this.store.author.get(),
                 description: this.store.description.get(),
-                filename: `${slug(this.store.title.get())}_@${this.store.frameRate.get()}.png`
+                credits: this.store.credits.get(),
+                filename: slug(this.store.title.get()) + '.png'
               })
               modal?.destroy()
             }}

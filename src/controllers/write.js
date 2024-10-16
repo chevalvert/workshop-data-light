@@ -9,9 +9,12 @@ export default async ({
   draw = noop,
   title = 'untitled',
   author = 'unknown',
+  credits = '',
   description = '0',
   filename = Date.now() + '.png'
 } = {}) => {
+  // TODO OffscreenCanvas + worker
+
   context.reset()
 
   const canvas = document.createElement('canvas')
@@ -32,6 +35,9 @@ export default async ({
   dataURL = addMetadataFromBase64DataURI(dataURL, 'Author', author)
   dataURL = addMetadataFromBase64DataURI(dataURL, 'Description', description)
   dataURL = addMetadataFromBase64DataURI(dataURL, 'Software', __REPOSITORY__)
+  dataURL = addMetadataFromBase64DataURI(dataURL, 'Comment', `@${context.frameRate}fps`)
+  dataURL = addMetadataFromBase64DataURI(dataURL, 'Copyright', credits)
+
   return write(filename, { dataURL })
 }
 
