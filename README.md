@@ -1,9 +1,26 @@
-# workshop-data-light [<img src="https://github.com/tooooools.png?size=100" size="100" align="right">](http://github.com/tooooools/)
-> Vite boilerplate with JSX, SCSS, `eslint`, `stylelint` and a test environment.
+![screenshot](screenshot.png)
 
-<br>
+# workshop-data-light
 
-// TODO
+## Documentation
+
+See [docs/reference](docs/reference.fr.md) (fr).
+
+## Development
+
+```console
+# Development
+$ yarn start
+$ yarn test
+
+# Staging
+$ yarn build
+$ yarn preview
+$ yarn deploy:staging
+
+# Production
+$ yarn version
+```
 
 ## Credits
 
