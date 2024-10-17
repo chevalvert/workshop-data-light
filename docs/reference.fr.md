@@ -83,8 +83,10 @@ Plusieurs utilitaires de l’API permettent de créer et manipuler les couleurs,
 Plusieurs permettent de contrôler les LEDs du bandeau.  
 Lorsqu’une position est nécessaire, `0` représente toujours la première LED, et `ledCount - 1` la dernière LED.
 
+Toutes les fonctions suivantes peuvent prendre un dernier paramètre `mixBlendMode` contrôlant le [mode de fusion de la couleur](https://gka.github.io/chroma.js/#chroma-blend) sur une couleur existante. Les valeurs possibles sont `multiply`, `darken`, `lighten`, `screen`, `overlay`, `burn` et `dodge`. Si aucune valeur n’est spécifiée, la nouvelle couleur écrasera la précédente.
+
 <details>
-  <summary><strong><code>fill(color)</code></strong></summary>
+  <summary><strong><code>fill(color, mixBlendMode)</code></strong></summary>
   
   Applique la couleur `color` à toutes les LEDs du bandeau.
 
@@ -95,7 +97,7 @@ Lorsqu’une position est nécessaire, `0` représente toujours la première LED
 </details>
 
 <details>
-  <summary><strong><code>led(index, color)</code></strong></summary>
+  <summary><strong><code>led(index, color, mixBlendMode)</code></strong></summary>
     
   Applique la couleur `color` à la LED de la position `index`.
 
@@ -106,7 +108,7 @@ Lorsqu’une position est nécessaire, `0` représente toujours la première LED
 </details>
 
 <details>
-  <summary><strong><code>line(from, to, color)</code></strong></summary>
+  <summary><strong><code>line(from, to, color, mixBlendMode)</code></strong></summary>
   
   Applique la couleur `color` à toutes les LEDs entre la position `from` et la position `to`.
 
@@ -117,7 +119,7 @@ Lorsqu’une position est nécessaire, `0` représente toujours la première LED
 </details>
 
 <details>
-  <summary><strong><code>gradient(from, to, color1, color2)</code></strong></summary>
+  <summary><strong><code>gradient(from, to, color1, color2, colorSpace = 'rgb', mixBlendMode)</code></strong></summary>
 
   Applique un dégradé de la couleur `color1` à la couleur `color2` à toutes les LEDS entre la position `from` et la position `to`.
   

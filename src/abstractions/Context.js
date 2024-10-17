@@ -31,32 +31,34 @@ export default class Context {
       this.leds = new Array(this.ledCount)
     },
 
-    led: (index, color = this.rgb()) => {
+    led: (index, color = this.rgb(), mixBlendMode = null) => {
       if (!color || !color._rgb) throw new Error('Unexpected color value')
       index = Math.round(index)
       if (index < 0 || index > this.leds.length) return
-      this.leds[index] = color._rgb
+
+      if (mixBlendMode && this.leds[index]) this.leds[index] = chroma.blend(this.leds[index], color, mixBlendMode)._rgb
+      else this.leds[index] = color._rgb
     },
 
-    line: (from, to, color) => {
+    line: (from, to, color, mixBlendMode = null) => {
       const range = [from, to].sort((a, b) => a - b)
       for (let index = range[0]; index < range[1]; index++) {
-        this.led(index, color)
+        this.led(index, color, mixBlendMode)
       }
     },
 
-    fill: (color = this.rgb()) => {
-      this.line(0, this.ledCount, color)
+    fill: (color = this.rgb(), mixBlendMode = null) => {
+      this.line(0, this.ledCount, color, mixBlendMode)
     },
 
-    gradient: (from, to, color1 = this.rgb(), color2 = color1, colorSpace = 'rgb') => {
+    gradient: (from, to, color1 = this.rgb(), color2 = color1, colorSpace = 'rgb', mixBlendMode = null) => {
       if (!color1 || !color1._rgb) throw new Error('Unexpected color value')
       if (!color2 || !color2._rgb) throw new Error('Unexpected color value')
 
       const range = [from, to].sort((a, b) => a - b)
       for (let index = range[0]; index < range[1]; index++) {
         const t = MissingMath.normalize(index, range[0], range[1])
-        this.led(index, chroma.mix(color1, color2, t, colorSpace))
+        this.led(index, chroma.mix(color1, color2, t, colorSpace), mixBlendMode)
       }
     }
   }
