@@ -53,7 +53,7 @@ export default class Context {
       if (!color1 || !color1._rgb) throw new Error('Unexpected color value')
       if (!color2 || !color2._rgb) throw new Error('Unexpected color value')
 
-      const range = [from, to].sort()
+      const range = [from, to].sort((a, b) => a - b)
       for (let index = range[0]; index < range[1]; index++) {
         const t = MissingMath.normalize(index, range[0], range[1])
         this.led(index, chroma.mix(color1, color2, t, colorSpace))
