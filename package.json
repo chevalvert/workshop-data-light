@@ -1,6 +1,6 @@
 {
   "name": "workshop-data-light",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "client and server for the data light workshop",
   "scripts": {
     "start": "vite",
