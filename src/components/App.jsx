@@ -163,6 +163,8 @@ export default class App extends Component {
     this.store.code.subscribe(this.#oncode)
     this.store.data.subscribe(this.#ondata)
 
+    // Do not execute code right away in safe mode
+    if (window.location.hash === '#safe') return
     this.#ondata()
     this.#oncode()
   }
