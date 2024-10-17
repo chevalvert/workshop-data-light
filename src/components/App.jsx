@@ -102,7 +102,7 @@ export default class App extends Component {
                 <Button
                   icon={derived(this.state.running, r => r ? Icons.stop : Icons.play)}
                   event-click={e => {
-                    this.state.running.get() ? this.stop() : this.start()
+                    this.state.running.get() ? this.stop() : this.#oncode()
                   }}
                   active={this.state.running}
                 />
