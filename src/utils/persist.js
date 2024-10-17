@@ -1,7 +1,7 @@
-/* global localStorage, __NAME__, __VERSION__ */
+/* global localStorage, __NAME__ */
 import { writable } from '@tooooools/ui/state'
 
-const NS = `${__NAME__}@${__VERSION__}__`
+const NS = `${__NAME__}__`
 
 export default function (value, key, {
   encode = JSON.stringify,
