@@ -243,7 +243,7 @@ export default class App extends Component {
 
   #ondata = async () => {
     const signature = this.store.data.get()
-    const m = await import('data:text/javascript,' + signature /* @vite-ignore */)
+    const m = await import('data:text/javascript;base64,' + btoa(signature) /* @vite-ignore */)
     try {
       this.context.data = m.default
     } catch (error) {
@@ -258,7 +258,10 @@ export default class App extends Component {
     this.stop()
 
     try {
-      this._module = await import('data:text/javascript,' + signature /* @vite-ignore */)
+      // TODO[next] use worker to run module code, measure execution time and
+      // kill if too long (ie infinite loop)
+      // SEE https://github.com/dtao/lemming.js
+      this._module = await import('data:text/javascript;base64,' + btoa(signature) /* @vite-ignore */)
 
       this.tick = fpsLimiter(this.context.frameRate, dt => {
         this.state.frameCount.set(this.context.frameCount)
